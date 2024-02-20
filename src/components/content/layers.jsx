@@ -28,7 +28,6 @@ const Layers = () => {
     const renderLayers = () => {
         if (layerData.length) {
             return layerData.map((layer) => {
-                console.log(layer)
                 const layerName = layer.item_id;
                 const { threshold, period } = layer.config;
                 const successfulDates = layer?.successful_dates || [];
