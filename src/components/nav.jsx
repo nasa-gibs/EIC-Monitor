@@ -13,7 +13,7 @@ const NavBar = () => {
     >
       <Flex alignItems="center">
         <Image
-          src="/logo.png" 
+          src="/EIC-Monitor/logo.png" 
           alt="Logo"
           mr={2} 
           height="50px"

@@ -20,7 +20,7 @@ const Scenarios = () => {
     const [scenarioData, setScenarioData] = useState([]);
 
     const requestScenarios = async () => {
-        const url = "https://nsj8g82r8j.execute-api.us-east-1.amazonaws.com/dev/all-scenarios"
+        const url = "https://m80gyw03f7.execute-api.us-east-1.amazonaws.com/dev/all-scenarios"
         try {
             const response = await fetch(url);
             const data = await response.json();
