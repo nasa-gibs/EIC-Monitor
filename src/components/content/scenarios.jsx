@@ -13,9 +13,17 @@ import {
     Spinner,
     Button,
 } from '@chakra-ui/react';
-import config from '../../config/config';
+import config, { scenarioUrls } from '../../config/config';
+import { useSelector, useDispatch } from 'react-redux';
+import { 
+    selectScenario as selectScenarioAction,
+    selectContent as selectContentAction 
+} from '../../redux/slice';
 
 const Scenarios = () => {
+    const dispatch = useDispatch();
+    const selectContent = (content) => { dispatch(selectContentAction(content)) }
+    const selectScenario = (scenario) => { dispatch(selectScenarioAction(scenario)) }
 
     const [scenarioData, setScenarioData] = useState([]);
 
@@ -29,6 +37,11 @@ const Scenarios = () => {
         catch (error) {
             console.log(error);
         }
+    }
+
+    const handleEicSelection = (scenarioId) => {
+        selectScenario(scenarioId);
+        selectContent('eic');
     }
 
     useEffect(() => {
@@ -70,7 +83,8 @@ const Scenarios = () => {
                             <Tr>
                                 <Th color="whiteAlpha.900" fontSize="lg" textAlign="center">Scenario</Th>
                                 <Th color="whiteAlpha.900" fontSize="lg" textAlign="center">Layers</Th>
-                                <Th color="whiteAlpha.900" fontSize="lg">Resolution Date</Th>
+                                <Th color="whiteAlpha.900" fontSize="lg" textAlign="center">Resolution Date</Th>
+                                <Th color="whiteAlpha.900" fontSize="lg" textAlign="center">EIC</Th>
                             </Tr>
                         </Thead>
                         <Tbody>
@@ -85,7 +99,16 @@ const Scenarios = () => {
                                                 </Text>
                                             ))}
                                         </Td>
-                                            <Td textAlign="center">{scenario.date}</Td>
+                                        <Td textAlign="center">
+                                            {scenario.date}
+                                        </Td>
+                                            <Td>
+                                            { scenarioUrls[scenario.id] &&
+                                                <Button colorScheme="blue" variant="solid" onClick={() => handleEicSelection(scenario.id)}>
+                                                    See EIC
+                                                </Button>
+                                            }
+                                            </Td>
                                         </Tr>
                                         );
                             })}

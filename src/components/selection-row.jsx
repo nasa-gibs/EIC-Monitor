@@ -30,11 +30,18 @@ const SelectionRow = () => {
         </Button>
         <Button
           colorScheme="blue"
+          variant={selectedContent === 'eic' ? 'solid' : 'outline'}
+          onClick={() => handleSelectContent('eic')}
+        >
+          EIC
+        </Button>
+        {/* <Button
+          colorScheme="blue"
           variant={selectedContent === 'worldview' ? 'solid' : 'outline'}
           onClick={() => handleSelectContent('worldview')}
         >
           Worldview
-        </Button>
+        </Button> */}
       </Flex>
     </Flex>
   );

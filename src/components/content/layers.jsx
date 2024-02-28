@@ -7,7 +7,6 @@ import {
     Divider,
     Grid,
     Box,
-    
 } from '@chakra-ui/react';
 
 const Layers = () => {

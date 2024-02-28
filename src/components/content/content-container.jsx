@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Box, Flex } from '@chakra-ui/react';
 import Scenarios from './scenarios';
 import Layers from './layers';
+import EIC from './eic'
 
 const ContentContainer = () => {
     const selectedContent = useSelector((state) => state.main.selectedContent);
@@ -15,6 +16,8 @@ const ContentContainer = () => {
                 return <Layers />;
             // case 'worldview':
             //     return <Box>Worldview</Box>;
+            case 'eic':
+                return <EIC />
             default:
                 return <Layers />;
         }
