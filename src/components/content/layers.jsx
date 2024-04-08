@@ -13,7 +13,7 @@ const Layers = () => {
     const [layerData, setLayerData] = useState([])
 
     const requestLayers = async () => {
-        const url = "https://m80gyw03f7.execute-api.us-east-1.amazonaws.com/dev/all-layers"
+        const url = "https://uhkookzof2.execute-api.us-west-2.amazonaws.com/dev/all-layers"
         try {
             const response = await fetch(url);
             const data = await response.json();
