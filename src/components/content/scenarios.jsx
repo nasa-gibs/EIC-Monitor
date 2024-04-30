@@ -28,7 +28,7 @@ const Scenarios = () => {
     const [scenarioData, setScenarioData] = useState([]);
 
     const requestScenarios = async () => {
-        const url = "https://uhkookzof2.execute-api.us-west-2.amazonaws.com/dev/all-scenarios"
+        const url = "https://worldview.earthdata.nasa.gov/eic/all-scenarios"
         try {
             const response = await fetch(url);
             const data = await response.json();
