@@ -76,6 +76,6 @@ export default {
     15: 'Ozone by TEMPO satellite',
     16: 'Black Marble night time imagery from NOAA-20 satellite',
     17: 'Black Marble night time imagery (Blue/yellow composite) from NOAA-20 satellite',
-    18: 'Aerosol Optical Depth (AOD) by NOAA20 satellite',
+    18: 'Aerosol Optical Depth (AOD) by NOAA-20 satellite',
     19: 'Active fires detected by NOAA-21 satellite',
   }
