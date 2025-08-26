@@ -6,6 +6,10 @@ import { scenarioUrls, scenarioUrlsProd, scenarioNicknames } from '../../config/
 import { useSelector, useDispatch } from 'react-redux';
 import { selectScenario as selectScenarioAction } from '../../redux/slice';
 
+const DEV_MODE = false;
+
+const URLS = DEV_MODE ? scenarioUrls : scenarioUrlsProd;
+
 const EIC = () => {
     const dispatch = useDispatch();
     const selectScenario = (scenario) => { dispatch(selectScenarioAction(scenario)) }
@@ -26,14 +30,14 @@ const EIC = () => {
         <>
             <Flex direction="column" align="center" justify="center" p={4} width="100%">
                 <Select placeholder="Select scenario" onChange={handleChange} value={selectedScenario} mb={4}>
-                    {Object.keys(scenarioUrlsProd).map((id) => (
+                    {Object.keys(URLS).map((id) => (
                         <option value={id} key={id}>Scenario {id}: {scenarioNicknames[id]}</option>
                     ))}
                 </Select>
                 
                 <div className="embed-container" style={embedDimensions}>
                     <iframe 
-                        src={scenarioUrlsProd[selectedScenario]} 
+                        src={URLS[selectedScenario]} 
                         role="application" 
                         sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups" 
                         width="100%" 
