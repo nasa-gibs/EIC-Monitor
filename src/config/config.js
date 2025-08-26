@@ -6,8 +6,8 @@ export default {
     5: ['IMERG_Precipitation_Rate'],
     6: ['GHRSST_L4_MUR_Sea_Surface_Temperature'],
     7: ['MODIS_Aqua_Land_Surface_Temp_Day', 'MODIS_Aqua_CorrectedReflectance_TrueColor'],
-    8: ['VIIRS_SNPP_NDVI_8Day'],
-    9: ['VIIRS_SNPP_NDVI_8Day'],
+    8: ['AMSRU2_Sea_Ice_Concentration_12km'],
+    9: ['AMSRU2_Sea_Ice_Concentration_12km'],
     10: ['VIIRS_NOAA20_CorrectedReflectance_TrueColor'],
     11: ['OMI_Nitrogen_Dioxide_Tropo_Column', 'VIIRS_NOAA20_CorrectedReflectance_TrueColor'],
     12: ['AIRS_L3_Carbon_Monoxide_500hPa_Volume_Mixing_Ratio_Daily_Night', 'AIRS_L3_Carbon_Monoxide_500hPa_Volume_Mixing_Ratio_Daily_Day'],
@@ -17,7 +17,8 @@ export default {
     16: ['VIIRS_NOAA20_DayNightBand_At_Sensor_Radiance'],
     17: ['VIIRS_NOAA20_DayNightBand_AtSensor_M15'],
     18: ['VIIRS_NOAA20_AOT_Dark_Target_Land_Ocean', 'VIIRS_NOAA20_AOT_Deep_Blue_Best_Estimate', 'VIIRS_NOAA20_CorrectedReflectance_TrueColor'],
-    19: ['VIIRS_NOAA21_CorrectedReflectance_TrueColor']
+    19: ['VIIRS_NOAA21_CorrectedReflectance_TrueColor'],
+    20: ['VIIRS_SNPP_NDVI_8Day'],
   };
   
   export const scenarioUrls = {
@@ -28,8 +29,6 @@ export default {
     5: "http://localhost:3000/?v=-205.72171420740915,-98.53068072538338,206.78657152152607,106.52986177528524&df=true&kiosk=true&eic=si&l=IMERG_Precipitation_Rate,Land_Mask&lg=false&scenario=5",
     6: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m(opacity=0.71),GHRSST_L4_MUR_Sea_Surface_Temperature(palette=divergent_1)&lg=true&scenario=6",
     7: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,MODIS_Aqua_Land_Surface_Temp_Day,MODIS_Aqua_CorrectedReflectance_TrueColor(opacity=0.8)&lg=true&scenario=7",
-    8: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,VIIRS_SNPP_NDVI_8Day&lg=false&scenario=8",
-    9: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,VIIRS_SNPP_NDVI_8Day&lg=false&scenario=9",
     10: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,VIIRS_NOAA20_Thermal_Anomalies_375m_All,VIIRS_NOAA20_CorrectedReflectance_TrueColor&lg=false&scenario=10",
     11: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,OMI_Nitrogen_Dioxide_Tropo_Column(palette=rainbow_5,max=14800000000000000,squash=true),VIIRS_NOAA20_CorrectedReflectance_TrueColor&lg=false&scenario=11",
     12: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,AIRS_L3_Carbon_Monoxide_500hPa_Volume_Mixing_Ratio_Daily_Night,AIRS_L3_Carbon_Monoxide_500hPa_Volume_Mixing_Ratio_Daily_Day&lg=false&scenario=12",
@@ -40,6 +39,7 @@ export default {
     17: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=17&l=Coastlines_15m,VIIRS_NOAA20_DayNightBand_AtSensor_M15&lg=false",
     18: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=18&l=Coastlines_15m,VIIRS_NOAA20_AOT_Dark_Target_Land_Ocean,VIIRS_NOAA20_AOT_Deep_Blue_Best_Estimate,VIIRS_NOAA20_CorrectedReflectance_TrueColor&lg=false",
     19: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=19&l=Coastlines_15m,VIIRS_NOAA21_Thermal_Anomalies_375m_All,VIIRS_NOAA21_CorrectedReflectance_TrueColor&lg=false",
+    20: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,VIIRS_SNPP_NDVI_8Day&lg=false",
   }
 
   export const scenarioUrlsProd = {
@@ -50,8 +50,6 @@ export default {
     5: "https://worldview.earthdata.nasa.gov/?v=-205.72171420740915,-98.53068072538338,206.78657152152607,106.52986177528524&df=true&kiosk=true&eic=si&l=IMERG_Precipitation_Rate,Land_Mask&lg=false&scenario=5",
     6: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m(opacity=0.71),GHRSST_L4_MUR_Sea_Surface_Temperature(palette=divergent_1)&lg=true&scenario=6",
     7: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,MODIS_Aqua_Land_Surface_Temp_Day,MODIS_Aqua_CorrectedReflectance_TrueColor(opacity=0.8)&lg=true&scenario=7",
-    8: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,VIIRS_SNPP_NDVI_8Day&lg=false&scenario=8",
-    9: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,VIIRS_SNPP_NDVI_8Day&lg=false&scenario=9",
     10: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,VIIRS_NOAA20_Thermal_Anomalies_375m_All,VIIRS_NOAA20_CorrectedReflectance_TrueColor&lg=false&scenario=10",
     11: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,OMI_Nitrogen_Dioxide_Tropo_Column(palette=rainbow_5,max=14800000000000000,squash=true),VIIRS_NOAA20_CorrectedReflectance_TrueColor&lg=false&scenario=11",
     12: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,AIRS_L3_Carbon_Monoxide_500hPa_Volume_Mixing_Ratio_Daily_Night,AIRS_L3_Carbon_Monoxide_500hPa_Volume_Mixing_Ratio_Daily_Day&lg=false&scenario=12",
@@ -62,6 +60,7 @@ export default {
     17: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=17&l=Coastlines_15m,VIIRS_NOAA20_DayNightBand_AtSensor_M15&lg=false",
     18: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=18&l=Coastlines_15m,VIIRS_NOAA20_AOT_Dark_Target_Land_Ocean,VIIRS_NOAA20_AOT_Deep_Blue_Best_Estimate,VIIRS_NOAA20_CorrectedReflectance_TrueColor&lg=false",
     19: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=19&l=Coastlines_15m,VIIRS_NOAA21_Thermal_Anomalies_375m_All,VIIRS_NOAA21_CorrectedReflectance_TrueColor&lg=false",
+    20: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=20&l=Coastlines_15m,VIIRS_SNPP_NDVI_8Day&lg=false",
   }
 
   export const scenarioNicknames = {
@@ -72,8 +71,6 @@ export default {
     5: 'Rain and Snow',
     6: 'Sea Surface Temperature',
     7: 'Land Surface Temperature',
-    8: "Vegetation Index (NDVI) by Suomi NPP satellite",
-    9: 'Vegetation Index (NDVI) by Suomi NPP satellite',
     10: 'Active fires detected by NOAA-20 satellite',
     11: 'Nitrogen Dioxide (NO2) by Aura satellite',
     12: 'Carbon Monoxide (CO) by Aqua satellite',
@@ -84,4 +81,5 @@ export default {
     17: 'Black Marble night time imagery (Blue/yellow composite) from NOAA-20 satellite',
     18: 'Aerosol Optical Depth (AOD) by NOAA-20 satellite',
     19: 'Active fires detected by NOAA-21 satellite',
+    20: 'Vegetation Index (NDVI) by Suomi NPP satellite',
   }
