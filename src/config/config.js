@@ -17,7 +17,8 @@ export default {
     16: ['VIIRS_NOAA20_DayNightBand_At_Sensor_Radiance'],
     17: ['VIIRS_NOAA20_DayNightBand_AtSensor_M15'],
     18: ['VIIRS_NOAA20_AOT_Dark_Target_Land_Ocean', 'VIIRS_NOAA20_AOT_Deep_Blue_Best_Estimate', 'VIIRS_NOAA20_CorrectedReflectance_TrueColor'],
-    19: ['VIIRS_NOAA21_CorrectedReflectance_TrueColor']
+    19: ['VIIRS_NOAA21_CorrectedReflectance_TrueColor'],
+    20: ['VIIRS_SNPP_NDVI_8Day'],
   };
   
   export const scenarioUrls = {
@@ -38,6 +39,7 @@ export default {
     17: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=17&l=Coastlines_15m,VIIRS_NOAA20_DayNightBand_AtSensor_M15&lg=false",
     18: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=18&l=Coastlines_15m,VIIRS_NOAA20_AOT_Dark_Target_Land_Ocean,VIIRS_NOAA20_AOT_Deep_Blue_Best_Estimate,VIIRS_NOAA20_CorrectedReflectance_TrueColor&lg=false",
     19: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=19&l=Coastlines_15m,VIIRS_NOAA21_Thermal_Anomalies_375m_All,VIIRS_NOAA21_CorrectedReflectance_TrueColor&lg=false",
+    20: "http://localhost:3000/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&l=Coastlines_15m,VIIRS_SNPP_NDVI_8Day&lg=false",
   }
 
   export const scenarioUrlsProd = {
@@ -58,6 +60,7 @@ export default {
     17: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=17&l=Coastlines_15m,VIIRS_NOAA20_DayNightBand_AtSensor_M15&lg=false",
     18: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=18&l=Coastlines_15m,VIIRS_NOAA20_AOT_Dark_Target_Land_Ocean,VIIRS_NOAA20_AOT_Deep_Blue_Best_Estimate,VIIRS_NOAA20_CorrectedReflectance_TrueColor&lg=false",
     19: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=19&l=Coastlines_15m,VIIRS_NOAA21_Thermal_Anomalies_375m_All,VIIRS_NOAA21_CorrectedReflectance_TrueColor&lg=false",
+    20: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=20&l=Coastlines_15m,VIIRS_SNPP_NDVI_8Day&lg=false",
   }
 
   export const scenarioNicknames = {
@@ -78,4 +81,5 @@ export default {
     17: 'Black Marble night time imagery (Blue/yellow composite) from NOAA-20 satellite',
     18: 'Aerosol Optical Depth (AOD) by NOAA-20 satellite',
     19: 'Active fires detected by NOAA-21 satellite',
+    20: 'Vegetation Index (NDVI) by Suomi NPP satellite',
   }
