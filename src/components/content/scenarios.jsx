@@ -13,7 +13,7 @@ import {
     Spinner,
     Button,
 } from '@chakra-ui/react';
-import config, { scenarioUrls } from '../../config/config';
+import {scenarioLayers, scenarioUrls } from '../../config/config';
 import { useSelector, useDispatch } from 'react-redux';
 import { 
     selectScenario as selectScenarioAction,
@@ -58,9 +58,9 @@ const Scenarios = () => {
                     return acc;
                 }, {});
             
-                Object.keys(config).forEach(item_id => {
+                Object.keys(scenarioLayers).forEach(item_id => {
                     const resolutionDate = scenarioMap[item_id] || 'No valid date found';
-                    const layers = config[item_id];
+                    const layers = scenarioLayers[item_id];
                     scenarios.push({
                         id: item_id,
                         layers: layers,
