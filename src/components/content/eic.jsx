@@ -2,7 +2,7 @@ import {
     Flex, 
     Select,
 } from '@chakra-ui/react';
-import { scenarioUrls, scenarioUrlsProd, scenarioNicknames } from '../../config/config';
+import { scenarioUrls, scenarioDescriptions } from '../../config/config';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectScenario as selectScenarioAction } from '../../redux/slice';
 
@@ -26,14 +26,14 @@ const EIC = () => {
         <>
             <Flex direction="column" align="center" justify="center" p={4} width="100%">
                 <Select placeholder="Select scenario" onChange={handleChange} value={selectedScenario} mb={4}>
-                    {Object.keys(scenarioUrlsProd).map((id) => (
-                        <option value={id} key={id}>Scenario {id}: {scenarioNicknames[id]}</option>
+                    {Object.keys(scenarioUrls).map((id) => (
+                        <option value={id} key={id}>Scenario {id}: {scenarioDescriptions[id]}</option>
                     ))}
                 </Select>
                 
                 <div className="embed-container" style={embedDimensions}>
                     <iframe 
-                        src={scenarioUrlsProd[selectedScenario]} 
+                        src={scenarioUrls[selectedScenario]} 
                         role="application" 
                         sandbox="allow-modals allow-scripts allow-same-origin allow-forms allow-popups" 
                         width="100%" 
