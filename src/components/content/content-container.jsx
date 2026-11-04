@@ -1,6 +1,5 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Box, Flex } from '@chakra-ui/react';
+import { useSelector } from 'react-redux';
+import { Flex } from '@chakra-ui/react';
 import Scenarios from './scenarios';
 import Layers from './layers';
 import EIC from './eic'

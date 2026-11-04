@@ -1,4 +1,3 @@
-import React from 'react';
 import { Button, Flex } from '@chakra-ui/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContent as selectContentAction } from '../redux/slice';
@@ -15,28 +14,28 @@ const SelectionRow = () => {
     <Flex justifyContent="center" alignItems="center" width="full" mt="4" mb="4">
       <Flex justifyContent="space-around" width="lg" maxWidth="100%">
         <Button
-          colorScheme="blue"
+          colorPalette="blue"
           variant={selectedContent === 'scenarios' ? 'solid' : 'outline'}
           onClick={() => handleSelectContent('scenarios')}
         >
           Scenarios
         </Button>
         <Button
-          colorScheme="blue"
+          colorPalette="blue"
           variant={selectedContent === 'layers' ? 'solid' : 'outline'}
           onClick={() => handleSelectContent('layers')}
         >
           Layers
         </Button>
         <Button
-          colorScheme="blue"
+          colorPalette="blue"
           variant={selectedContent === 'eic' ? 'solid' : 'outline'}
           onClick={() => handleSelectContent('eic')}
         >
           EIC
         </Button>
         {/* <Button
-          colorScheme="blue"
+          colorPalette="blue"
           variant={selectedContent === 'worldview' ? 'solid' : 'outline'}
           onClick={() => handleSelectContent('worldview')}
         >
