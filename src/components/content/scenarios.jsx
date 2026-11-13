@@ -1,20 +1,13 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { 
     Flex, 
     Text,
     Table,
-    Thead,
-    Tbody,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    TableContainer, 
     Spinner,
     Button,
 } from '@chakra-ui/react';
 import {scenarioLayers, scenarioUrls } from '../../config/config';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { 
     selectScenario as selectScenarioAction,
     selectContent as selectContentAction 
@@ -27,7 +20,7 @@ const Scenarios = () => {
 
     const [scenarioData, setScenarioData] = useState([]);
 
-    const requestScenarios = async () => {
+    const requestScenarios = useCallback(async () => {
         const url = "https://worldview.earthdata.nasa.gov/eic/all-scenarios"
         try {
             const response = await fetch(url);
@@ -37,7 +30,7 @@ const Scenarios = () => {
         catch (error) {
             console.log(error);
         }
-    }
+    }, []);
 
     const handleEicSelection = (scenarioId) => {
         selectScenario(scenarioId);
@@ -45,8 +38,9 @@ const Scenarios = () => {
     }
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         requestScenarios();
-    }, []);
+    }, [requestScenarios]);
 
     const renderTable = () => {
         if (scenarioData.length) {
@@ -74,47 +68,45 @@ const Scenarios = () => {
             };
             const scenarios = organizeScenarios();
             return (
-                <TableContainer>
-                    <Table>
-                        <TableCaption color="whiteAlpha.900" fontSize="md">
-                            Resolution date represents the most recent date that each layer in a scenario shares available imagery
-                        </TableCaption>
-                        <Thead>
-                            <Tr>
-                                <Th color="whiteAlpha.900" fontSize="lg" textAlign="center">Scenario</Th>
-                                <Th color="whiteAlpha.900" fontSize="lg" textAlign="center">Layers</Th>
-                                <Th color="whiteAlpha.900" fontSize="lg" textAlign="center">Resolution Date</Th>
-                                <Th color="whiteAlpha.900" fontSize="lg" textAlign="center">EIC</Th>
-                            </Tr>
-                        </Thead>
-                        <Tbody>
-                            {scenarios.map(scenario => {
-                                return (
-                                    <Tr key={scenario.id}>
-                                        <Td textAlign="center">{scenario.id}</Td>
-                                        <Td>
-                                            {scenario.layers.map((layer, index) => (
-                                                <Text as="div" key={index} textAlign="center">
-                                                    {layer}
-                                                </Text>
-                                            ))}
-                                        </Td>
-                                        <Td textAlign="center">
-                                            {scenario.date}
-                                        </Td>
-                                            <Td>
-                                            { scenarioUrls[scenario.id] &&
-                                                <Button colorScheme="blue" variant="solid" onClick={() => handleEicSelection(scenario.id)}>
-                                                    See EIC
-                                                </Button>
-                                            }
-                                            </Td>
-                                        </Tr>
-                                        );
-                            })}
-                        </Tbody>
-                    </Table>
-                </TableContainer>
+                <Table.Root className="dark" variant="simple" size="md">
+                    <Table.Caption fontSize="md" py="4" px="6">
+                        Resolution date represents the most recent date that each layer in a scenario shares available imagery
+                    </Table.Caption>
+                    <Table.Header textTransform="uppercase" borderBottomWidth="1px" borderColor="white">
+                        <Table.Row>
+                            <Table.ColumnHeader fontSize="lg" textAlign="center">Scenario</Table.ColumnHeader>
+                            <Table.ColumnHeader fontSize="lg" textAlign="center">Layers</Table.ColumnHeader>
+                            <Table.ColumnHeader fontSize="lg" textAlign="center">Resolution Date</Table.ColumnHeader>
+                            <Table.ColumnHeader fontSize="lg" textAlign="center">EIC</Table.ColumnHeader>
+                        </Table.Row>
+                    </Table.Header>
+                    <Table.Body divideY="1px" divideColor="white" borderBottomWidth="1px" borderColor="white">
+                        {scenarios.map(scenario => {
+                            return (
+                                <Table.Row key={scenario.id}>
+                                    <Table.Cell textAlign="center">{scenario.id}</Table.Cell>
+                                    <Table.Cell>
+                                        {scenario.layers.map((layer, index) => (
+                                            <Text as="div" key={index} textAlign="center">
+                                                {layer}
+                                            </Text>
+                                        ))}
+                                    </Table.Cell>
+                                    <Table.Cell textAlign="center">
+                                        {scenario.date}
+                                    </Table.Cell>
+                                    <Table.Cell textAlign="center">
+                                        {scenarioUrls[scenario.id] &&
+                                            <Button colorPalette="blue" variant="solid" onClick={() => handleEicSelection(scenario.id)}>
+                                                See EIC
+                                            </Button>
+                                        }
+                                    </Table.Cell>
+                                </Table.Row>
+                            );
+                        })}
+                    </Table.Body>
+                </Table.Root>
             )
         } else {
             return (
@@ -131,7 +123,7 @@ const Scenarios = () => {
                 <Text as="h1" fontSize="3xl">
                     Scenarios
                 </Text>
-                <Button colorScheme="blue" variant="solid" ml="4" onClick={() => requestScenarios()}>
+                <Button colorPalette="blue" variant="solid" ml="4" onClick={() => requestScenarios()}>
                     Refresh Scenarios
                 </Button>
             </Flex>

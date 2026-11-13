@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { 
     Flex, 
     Text,
     Spinner,
     Button,
-    Divider,
+    Separator,
     Grid,
     Box,
 } from '@chakra-ui/react';
@@ -12,7 +12,7 @@ import {
 const Layers = () => {
     const [layerData, setLayerData] = useState([])
 
-    const requestLayers = async () => {
+    const requestLayers = useCallback(async () => {
         const url = "https://worldview.earthdata.nasa.gov/eic/all-layers"
         try {
             const response = await fetch(url);
@@ -22,7 +22,7 @@ const Layers = () => {
         catch (error) {
             console.log(error.message);
         }
-    }
+    }, []);
 
     const renderLayers = () => {
         if (layerData.length) {
@@ -41,7 +41,7 @@ const Layers = () => {
 
                 return (
                 <Flex key={layerName} direction="column" my="2" p="2" boxShadow="md" width="80%" borderRadius="md">
-                    <Divider mb="2" />
+                    <Separator mb="2" />
                     <Text fontSize="2xl" fontWeight="bold" mb="2">{layerName}</Text>
                     <Grid templateColumns="minmax(150px, auto) 1fr" gap={2}>
                         <Text fontSize="md" fontWeight="semibold">Period:</Text>
@@ -71,10 +71,10 @@ const Layers = () => {
                         <Text fontSize="md" fontWeight="bold" color={differenceIndicator}>{difference}</Text>
 
                         <Button 
-                        colorScheme="blue" 
-                        size="sm" 
-                        mb="2" 
-                        onClick={() => window.open(url, '_blank')}
+                            colorPalette="blue" 
+                            size="sm" 
+                            mb="2" 
+                            onClick={() => window.open(url, '_blank')}
                         >
                         View Imagery
                         </Button>
@@ -100,10 +100,10 @@ const Layers = () => {
                         <Text fontSize="md" fontWeight="bold" color="green">{lastSuccessfulRequest.difference}</Text>
 
                         <Button 
-                        colorScheme="blue" 
-                        size="sm" 
-                        mb="2" 
-                        onClick={() => window.open(lastSuccessfulRequest.url, '_blank')}
+                            colorPalette="blue" 
+                            size="sm" 
+                            mb="2" 
+                            onClick={() => window.open(lastSuccessfulRequest.url, '_blank')}
                         >
                         View Imagery
                         </Button>
@@ -128,8 +128,9 @@ const Layers = () => {
     };
 
     useEffect(() => {
+        // eslint-disable-next-line react-hooks/set-state-in-effect
         requestLayers();
-    }, []);
+    }, [requestLayers]);
 
     return (
         <Flex width="full" justifyContent="start" alignItems="center" flexDirection={"column"}>
@@ -137,7 +138,7 @@ const Layers = () => {
                 <Text as="h1" fontSize="3xl">
                     Layers
                 </Text>
-                <Button colorScheme="blue" variant="solid" ml="4" onClick={requestLayers}>
+                <Button colorPalette="blue" variant="solid" ml="4" onClick={requestLayers}>
                     Refresh Layers
                 </Button>
             </Flex>

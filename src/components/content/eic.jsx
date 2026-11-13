@@ -1,6 +1,6 @@
 import { 
     Flex, 
-    Select,
+    NativeSelect,
 } from '@chakra-ui/react';
 import { scenarioUrls, scenarioDescriptions } from '../../config/config';
 import { useSelector, useDispatch } from 'react-redux';
@@ -25,11 +25,14 @@ const EIC = () => {
     return (
         <>
             <Flex direction="column" align="center" justify="center" p={4} width="100%">
-                <Select placeholder="Select scenario" onChange={handleChange} value={selectedScenario} mb={4}>
-                    {Object.keys(scenarioUrls).map((id) => (
-                        <option value={id} key={id}>Scenario {id}: {scenarioDescriptions[id]}</option>
-                    ))}
-                </Select>
+                <NativeSelect.Root mb={4}>
+                    <NativeSelect.Field placeholder="Select scenario" onChange={handleChange} value={selectedScenario}>
+                        {Object.keys(scenarioUrls).map((id) => (
+                            <option value={id} key={id}>Scenario {id}: {scenarioDescriptions[id]}</option>
+                        ))}
+                    </NativeSelect.Field>
+                    <NativeSelect.Indicator color="white" />
+                </NativeSelect.Root>
                 
                 <div className="embed-container" style={embedDimensions}>
                     <iframe 
