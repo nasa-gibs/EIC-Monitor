@@ -35,7 +35,8 @@ export const scenarioLayers = {
   14: ['TEMPO_L3_NO2_Vertical_Column_Troposphere'],
   15: ['TEMPO_L3_Ozone_Column_Amount'],
   16: ['VIIRS_NOAA20_DayNightBand_At_Sensor_Radiance'],
-  19: ['VIIRS_NOAA21_CorrectedReflectance_TrueColor']
+  19: ['VIIRS_NOAA21_CorrectedReflectance_TrueColor'],
+  21: ['VIIRS_NOAA21_CorrectedReflectance_TrueColor']
 };
 
 // Production URLs for each scenario, keyed by the scenario ID
@@ -56,6 +57,7 @@ export const scenarioUrls = {
   15: "https://worldview.earthdata.nasa.gov/?v=-170.45859053523907,-12.106744252573016,-12.991540899766122,78.3821332289227&df=true&kiosk=true&eic=si&scenario=15&l=Coastlines_15m,TEMPO_L3_Ozone_Column_Amount&lg=false",
   16: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=16&l=Coastlines_15m,VIIRS_NOAA20_DayNightBand_At_Sensor_Radiance&lg=false",
   19: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&df=true&kiosk=true&eic=si&scenario=19&l=Coastlines_15m,VIIRS_NOAA21_Thermal_Anomalies_375m_All,VIIRS_NOAA21_CorrectedReflectance_TrueColor&lg=false",
+  21: "https://worldview.earthdata.nasa.gov/?v=-181.74360912131363,-98.53068072538338,182.80846643543055,106.52986177528524&l=OrbitTracks_NOAA-21_Ascending(opacity=0.9),Coastlines_15m,VIIRS_NOAA21_CorrectedReflectance_TrueColor&lg=false",
 }
 
 // Descriptions for each scenario, keyed by the scenario ID
@@ -76,4 +78,5 @@ export const scenarioDescriptions = {
   15: 'Ozone by TEMPO satellite',
   16: 'Black Marble night time imagery from NOAA-20 satellite',
   19: 'Active fires detected by NOAA-21 satellite',
+  21: 'True Color Imagery from NOAA-21 satellite',
 }
